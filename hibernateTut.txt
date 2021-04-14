@@ -1,0 +1,51 @@
+Hibernate is an ORM tool.
+It is used in the Data layer of applications.
+It implement JPA - Java persistence API -  It is a specification or API which enables us to do ORM to a relational SQL database.
+	  ORM means Object relational mapping. It means that previously we use JDBC and execute SQL queries to do fetch/CRUD in a table
+	  and then take the result and map into our object by some way. But with ORM, as soon as the program starts we directly ties the
+	  entities with the column of the table and didn't do many things like execute queries and then iterating and mapping.
+      JPA is a way to use ORM . so it is an efficient way.
+	  
+
+**********************************************************************************	
+
+Problem that Hibernate solves :- 
+
+In JDBC, we generally use some code to convert the class instances to table columns and records/entitites and vice versa.  i.e we have to write some sql queries and take it and then use some code to convert it into class instances.
+
+1) So first problem is Mapping member variables to columns.
+2) Also we have problem with Mapping relationships like suppose there will be a foreign key from some table to the primary key.
+	so its very difficult to take care through many lines of code.
+3) Now suppose i have a boolean type. DB doesn't have boolean data type. So when storing or retrieving this data , we have to handle 
+	it ourselves and write code wherever it is required.
+	
+So ORM is the Object Relational Mapping - The primary use is to map the objects / entities with the table fields.
+
+So Hibernate is basically an ORM tool which deals with all these situtations. It internally uses JDBC driver.
+
+**************************************************************************************
+
+To start with the Hibernate Configuration , we will see the comparison between what we did for JDBC.
+
+1) JDBC DB configuration - Hibernate Configuration through xml file
+2) Modl Object - Annotations
+3) Service method to create the model object - Use the hibernate API.
+
+***************************************************************************************
+
+So firstly we will add hibernate.cfg.xml for all the hibernate databse configuration and it will give the details of the db.
+Hibernate automatically takes this file as its configuration file.
+
+@Entity - It tells hibernate that this class is an entity class and we have to do mapping of this class.
+@Id - tells tht this field will be the primary key in table.
+
+1) Create the session factory - create a session- if you want to save something we need session from sessionFactory object.
+2) Create a session from session factory.
+3) create a session to save model objects.
+
+Before saving we have to begin the transaction and then after saving it we have to commit it.
+
+As we do save if there is no table of that Class, hibernate intelligently creates the table and insert the data in it.
+In later versions of hibernate it doesn't create a new table for us.
+
+
