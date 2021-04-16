@@ -9,8 +9,8 @@ public class Application {
 
     public static void main(String[] args) {
         UserDetails user = new UserDetails();
-        user.setUserId(101);
-        user.setUsername("nitin");
+        user.setUserId(105);
+        user.setUsername("nits");
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();

@@ -33,7 +33,7 @@ To start with the Hibernate Configuration , we will see the comparison between w
 
 ***************************************************************************************
 
-So firstly we will add hibernate.cfg.xml for all the hibernate databse configuration and it will give the details of the db.
+So firstly we will add hibernate.cfg.xml for all the hibernate database configuration and it will give the details of the db.
 Hibernate automatically takes this file as its configuration file.
 
 @Entity - It tells hibernate that this class is an entity class and we have to do mapping of this class.
@@ -49,3 +49,12 @@ As we do save if there is no table of that Class, hibernate intelligently create
 In later versions of hibernate it doesn't create a new table for us.
 
 
+******************************************* hbm2ddl configuration ***************************************************************
+
+If we give another record and start the program again, what hibernate will do that it will drop the existing table and create a new
+one with same name and add that record. It is because of <property name="hbm2ddl.auto">create</property> property.
+This property is used to drop and recreate the schema. It is useful and not useful also.
+Similarly if the property will be update, then it will just update instead of droping and creating a new table.
+
+<property name="hibernate.show_sql">true</property> 
+This above property is also usefulas it shows the SQL quries executed in the console i.e in stdout.
