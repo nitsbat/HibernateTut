@@ -63,3 +63,14 @@ Now if we want the column name of the table to be somewhat different than the va
 @column annotation in which we can give the name property with our own assumed column name. to the memebr variable.
 Similarly for the table name change , then same change the name property of the @Entity annotation. 
 We can also give the @column annotation in the getters rather than the memebr variables.
+
+For any field not to persist in table , we can just mark the memebr variable as statis or transient as static variable will always be one when
+used in any classes, hence there is no meaning of it. or just give annotation @transient.
+
+We can also give the table name using @table annotation.
+
+@Entity(name = "someThing") => this name will be used to identify the domain ..this name will only be identified by hql queries ..ie ..name of the domain object
+
+@Table(name = "someThing") => this name will be used to which table referred by domain object..ie ..name of the table
+
+Similarly if we have a variable of Date type and we just want its time or date to get persisted. we can just use @Temporal annotation.

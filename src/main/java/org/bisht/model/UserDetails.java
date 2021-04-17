@@ -1,18 +1,28 @@
 package org.bisht.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
-@Entity(name = "User")
+@Entity
+@Table(name = "User_Table")
 public class UserDetails {
 
     @Id
-    @Column(name = "id")
     private int userId;
 
-    @Column(name = "name")
+    @Transient
     private String username;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public int getUserId() {
         return userId;
