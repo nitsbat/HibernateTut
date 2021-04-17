@@ -58,3 +58,8 @@ Similarly if the property will be update, then it will just update instead of dr
 
 <property name="hibernate.show_sql">true</property> 
 This above property is also usefulas it shows the SQL quries executed in the console i.e in stdout.
+
+Now if we want the column name of the table to be somewhat different than the variable name of the class, then we have this 
+@column annotation in which we can give the name property with our own assumed column name. to the memebr variable.
+Similarly for the table name change , then same change the name property of the @Entity annotation. 
+We can also give the @column annotation in the getters rather than the memebr variables.
