@@ -10,7 +10,6 @@ public class UserDetails {
     @Id
     private int userId;
 
-    @Transient
     private String username;
 
     @Temporal(TemporalType.DATE)
@@ -38,5 +37,14 @@ public class UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

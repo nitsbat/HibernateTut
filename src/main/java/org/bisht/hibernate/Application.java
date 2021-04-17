@@ -20,5 +20,14 @@ public class Application {
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
+        session.close();
+
+        user = null;
+        System.out.println(user);
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        user = (UserDetails) session.get(UserDetails.class,105);
+        System.out.println(user);
     }
 }

@@ -74,3 +74,9 @@ We can also give the table name using @table annotation.
 @Table(name = "someThing") => this name will be used to which table referred by domain object..ie ..name of the table
 
 Similarly if we have a variable of Date type and we just want its time or date to get persisted. we can just use @Temporal annotation.
+
+
+*********************************************** Retrieve Objects using Hibernate API's ******************************************
+
+we can retrive or fetch an object using sessionFactory.get() method. first parameter will be the object class and second will be the 
+primary key.
