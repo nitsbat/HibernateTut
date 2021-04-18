@@ -11,23 +11,21 @@ public class Application {
 
     public static void main(String[] args) {
         UserDetails user = new UserDetails();
-        user.setUserId(105);
-        user.setUsername("nits");
+//        user.setUserId(105);
+        user.setUsername("bisht");
         user.setDate(new Date());
+
+        UserDetails user2 = new UserDetails();
+//        user.setUserId(105);
+        user2.setUsername("nitin");
+        user2.setDate(new Date());
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(user);
+        session.save(user2);
         session.getTransaction().commit();
         session.close();
-
-        user = null;
-        System.out.println(user);
-
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        user = (UserDetails) session.get(UserDetails.class,105);
-        System.out.println(user);
     }
 }

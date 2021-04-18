@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "User_Table")
 public class UserDetails {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
     private String username;
