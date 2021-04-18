@@ -88,3 +88,19 @@ primary key like it should just be unique and no business value.
 
 So hibernate provides this annotation of @GeneratedValue and just pass the strategy. it will automatically fill the value of primary key.
 
+************************************ Embedding Objects ***********************************************
+
+Now let's suppose we have to embed the object into the database rather than the primitive data type. Or if our element is in the array, etc.
+
+There are two types of object - Entity and Value object.
+Entity object we know that it represents the whole object which has meaning like the USer object.
+While the value object just means like it does saves the value but doesn't have any propose independently e.g the Address object in the USer object
+does save the value for Address object but if there is no user object, it will not have any purpose or meaning.
+Similalry the simple name memeber variable in the User object is the value object.
+
+We also have entity inside the entity object. but yes here the Address is the Value object.
+
+So to make a class a value Object , hibernate provides @Embeddable annotation for class and @Embedded for the memeber variable, which tells that this object needs to be embedded into another class object.. 
+So If we do simple embedding of object using this annotation what hibernate will do is like , it will consider the Address object as the plain one
+means all its member variable as plain memeber variable with User class and when we save it will make columns of all the memeber variables of the 
+class Address. 

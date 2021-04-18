@@ -4,16 +4,27 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "User_Table")
+@Table(name = "User")
 public class UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
     private String username;
 
     @Temporal(TemporalType.DATE)
     private Date date;
+
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Date getDate() {
         return date;
