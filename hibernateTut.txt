@@ -75,6 +75,7 @@ We can also give the table name using @table annotation.
 
 Similarly if we have a variable of Date type and we just want its time or date to get persisted. we can just use @Temporal annotation.
 
+If we want a variable with huge string or data , we can give it annotation @LOB whi ch is large object.
 
 *********************************************** Retrieve Objects using Hibernate API's ******************************************
 
@@ -102,10 +103,10 @@ We also have entity inside the entity object. but yes here the Address is the Va
 
 So to make a class a value Object , hibernate provides @Embeddable annotation for class and @Embedded for the memeber variable, which tells that this object needs to be embedded into another class object.. 
 So If we do simple embedding of object using this annotation what hibernate will do is like , it will consider the Address object as the plain one
-means all its member variable as plain memeber variable with User class and when we save it will make columns of all the memeber variables of the 
+means all its member variable as plain member variable with User class and when we save it will make columns of all the memeber variables of the
 class Address. 
 
-If we have a object primary key , suppose the Variable memebr like UserName(user id, name). So if we want to embedd this then we have
+If we have a object primary key , suppose the Variable member like UserName(user id, name). So if we want to embedd this then we have
 @EmbeddedId as a primary key instead of giving the @Id and @Embeddable.
 
 To configure the column name of the Embedded objects, just go to the pojo class of that object and just give the @Column annotation
@@ -114,3 +115,15 @@ and give name property to the variables.
 Now suppose if we have two member variables denoting two different scenarios like in Address, we can now have Office and Home address,
 So we don't want our column name similar to the simple Address class. Hence we can override the variable with @AttributesOverride property
 and then provide the column name for the same.
+
+
+Saving the Collections 
+
+Now suppose instead of plain fielld table we have multiple homeaddresses for a person, so what approach will we follow :
+
+We can think of like the Address variable should be in a list i.e set or list , and then in database the address list should be in 
+a different column and there will be an id which will be the foreign key to the user id of the User table.
+As a result we will save the address in another table , and for that we have ann annotation of @ElementCollection..
+
+The flow is like while the hibernate sees that it's a collection it will just make a new table and just as we set the new
+address tot the user it copies the user id and starts inserting the records in the table while marking the id as foreign key.

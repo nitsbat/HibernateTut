@@ -2,6 +2,8 @@ package org.bisht.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "User")
@@ -16,30 +18,15 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @AttributeOverrides({
-            @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET")),
-            @AttributeOverride(name = "city", column = @Column(name = "CITY_STREET")),
-            @AttributeOverride(name = "state", column = @Column(name = "STATE_STREET")),
-            @AttributeOverride(name = "pincode", column = @Column(name = "PIN_STREET"))
-    })
-    private Address homeAddress;
+    @ElementCollection
+    private Set<Address> addressLists = new HashSet<>();
 
-    private Address officeAddress;
-
-    public Address getOfficeAddress() {
-        return officeAddress;
+    public Set<Address> getAddressLists() {
+        return addressLists;
     }
 
-    public void setOfficeAddress(Address officeAddress) {
-        this.officeAddress = officeAddress;
-    }
-
-    public Address getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
+    public void setAddressLists(Set<Address> addressLists) {
+        this.addressLists = addressLists;
     }
 
     public Date getDate() {
