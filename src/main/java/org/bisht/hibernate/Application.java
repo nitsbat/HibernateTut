@@ -22,7 +22,8 @@ public class Application {
         user2.setDate(new Date());
         Address address = new Address();
         newAddress(address);
-        user2.setAddress(address);
+        user2.setHomeAddress(address);
+        user2.setOfficeAddress(address);
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();

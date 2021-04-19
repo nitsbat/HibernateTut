@@ -104,3 +104,13 @@ So to make a class a value Object , hibernate provides @Embeddable annotation fo
 So If we do simple embedding of object using this annotation what hibernate will do is like , it will consider the Address object as the plain one
 means all its member variable as plain memeber variable with User class and when we save it will make columns of all the memeber variables of the 
 class Address. 
+
+If we have a object primary key , suppose the Variable memebr like UserName(user id, name). So if we want to embedd this then we have
+@EmbeddedId as a primary key instead of giving the @Id and @Embeddable.
+
+To configure the column name of the Embedded objects, just go to the pojo class of that object and just give the @Column annotation
+and give name property to the variables.
+
+Now suppose if we have two member variables denoting two different scenarios like in Address, we can now have Office and Home address,
+So we don't want our column name similar to the simple Address class. Hence we can override the variable with @AttributesOverride property
+and then provide the column name for the same.

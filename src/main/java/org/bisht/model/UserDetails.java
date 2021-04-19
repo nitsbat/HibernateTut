@@ -16,14 +16,30 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    private Address address;
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET")),
+            @AttributeOverride(name = "city", column = @Column(name = "CITY_STREET")),
+            @AttributeOverride(name = "state", column = @Column(name = "STATE_STREET")),
+            @AttributeOverride(name = "pincode", column = @Column(name = "PIN_STREET"))
+    })
+    private Address homeAddress;
 
-    public Address getAddress() {
-        return address;
+    private Address officeAddress;
+
+    public Address getOfficeAddress() {
+        return officeAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setOfficeAddress(Address officeAddress) {
+        this.officeAddress = officeAddress;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     public Date getDate() {
