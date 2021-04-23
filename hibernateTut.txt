@@ -123,7 +123,14 @@ Now suppose instead of plain fielld table we have multiple homeaddresses for a p
 
 We can think of like the Address variable should be in a list i.e set or list , and then in database the address list should be in 
 a different column and there will be an id which will be the foreign key to the user id of the User table.
-As a result we will save the address in another table , and for that we have ann annotation of @ElementCollection..
+As a result we will save the address in another table(name class+collectionVariableName) known as JoinTable ,
+ and for that we have ann annotation of @ElementCollection..
 
 The flow is like while the hibernate sees that it's a collection it will just make a new table and just as we set the new
 address tot the user it copies the user id and starts inserting the records in the table while marking the id as foreign key.
+
+
+Now if i want the new table name and its primary or any columns name to be ours choice , then we use @JoinTable annotations
+and if want to change the column names the inside it @JoinColumns.
+
+

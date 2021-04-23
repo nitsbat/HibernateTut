@@ -19,6 +19,8 @@ public class UserDetails {
     private Date date;
 
     @ElementCollection
+    @JoinTable(name = "User_Address", joinColumns = {
+            @JoinColumn(name = "User_Id")})
     private Set<Address> addressLists = new HashSet<>();
 
     public Set<Address> getAddressLists() {
