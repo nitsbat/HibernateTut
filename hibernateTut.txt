@@ -6,7 +6,8 @@ It implement JPA - Java persistence API -  It is a specification or API which en
 	  entities with the column of the table and didn't do many things like execute queries and then iterating and mapping.
       JPA is a way to use ORM . so it is an efficient way.
 	  
-
+So if you will see we use all the annotations from javax.persistence which is JPA but that is all the annotations of
+interface , but the implementation of all these will be in hibernate.
 **********************************************************************************	
 
 Problem that Hibernate solves :- 
@@ -132,5 +133,14 @@ address tot the user it copies the user id and starts inserting the records in t
 
 Now if i want the new table name and its primary or any columns name to be ours choice , then we use @JoinTable annotations
 and if want to change the column names the inside it @JoinColumns.
+
+Now this table has a foreign key but suppose we want that this table to have a primary key also.
+So first step to do is like we should have collection which will have index type of property,
+ we can't use collections like hashset ,etc, so wwe will use like List ,etc.
+ Then hibernate provide us @CollectionId annotation which generate primary key based on the generator and
+ index. but this is specific to hibernate and not to JPA persistence.
+ @CollectionId takes Column name and type i.e data type and a generator to generate the value of the keys.
+
+
 
 

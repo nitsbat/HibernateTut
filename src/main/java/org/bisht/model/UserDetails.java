@@ -1,9 +1,11 @@
 package org.bisht.model;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "User")
@@ -21,13 +23,15 @@ public class UserDetails {
     @ElementCollection
     @JoinTable(name = "User_Address", joinColumns = {
             @JoinColumn(name = "User_Id")})
-    private Set<Address> addressLists = new HashSet<>();
+    @GenericGenerator(name="gen",strategy = "increment")
+    @CollectionId(columns = {@Column(name = "AddressId")}, type = @Type(type="long"), generator = "gen")
+    private List<Address> addressLists = new ArrayList<>();
 
-    public Set<Address> getAddressLists() {
+    public List<Address> getAddressLists() {
         return addressLists;
     }
 
-    public void setAddressLists(Set<Address> addressLists) {
+    public void setAddressLists(List<Address> addressLists) {
         this.addressLists = addressLists;
     }
 
