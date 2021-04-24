@@ -20,11 +20,9 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "User_Address", joinColumns = {
             @JoinColumn(name = "User_Id")})
-    @GenericGenerator(name="gen",strategy = "increment")
-    @CollectionId(columns = {@Column(name = "AddressId")}, type = @Type(type="long"), generator = "gen")
     private List<Address> addressLists = new ArrayList<>();
 
     public List<Address> getAddressLists() {

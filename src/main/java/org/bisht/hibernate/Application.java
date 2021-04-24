@@ -25,6 +25,14 @@ public class Application {
         session.save(user);
         session.getTransaction().commit();
         session.close();
+
+        user = null;
+        session = sessionFactory.openSession();
+        user = (UserDetails) session.get(UserDetails.class, 1);
+        session.close();
+//        if the fetch type of the address in the user class would be LAZY , then surely it would have thrown an
+//        error of @LazyInitializationException
+        System.out.println(user.getAddressLists().size());
     }
 
     private static Address newAddress1() {

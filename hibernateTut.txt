@@ -141,6 +141,29 @@ So first step to do is like we should have collection which will have index type
  index. but this is specific to hibernate and not to JPA persistence.
  @CollectionId takes Column name and type i.e data type and a generator to generate the value of the keys.
 
+******************************* VERY IMPORTANT ***********************
 
+There are two types in which the hibernate extracts or get data from the database.
+Now suppose there is a list object like address in the USER class , if in future one person has 100 addresses then it is
+not performance efficient to load all those addresses as only one or two will be used. So hibernate gives this ability to
+load the list elements only when it is called.
+This is called Lazy type fetch : it signifies that when there will be a need of collection object like when the getter
+of this will be called then only hibernate will go and fetch all the elements. but before that it should not load the
+elements. This helps in improving performance.
+The other is EAGER fetch type , in that all the elements are load just when the session.get is called irrespective of what
+the list elements size would be.
+By default Lazy fetch type takes place in hibernate.
+
+CONCEPT BEHIND THE LAZY AND EAGER FETCH TYPE
+
+the concept behind this both fetch type is of Proxy class like spring. The Proxy class will be a wrapper around this USer class
+and hibernate actually uses the instance of this to get or call all the getters of the member variables of USER.
+Hence when calling getAddress() of the User class, it is actually calling the getAddress() of proxy class which ultimately
+calls and get addresses of the user from the database.
+So for live example if we put session.close after the session.get() function , then the session will be destroyed and
+there will be no proxy object and hence it will throw an exception of LAzyIntialisationException.
+
+We can provide fetchType in the @ElementCollection annotation as a parameter.
+******************************************************************************************************
 
 
