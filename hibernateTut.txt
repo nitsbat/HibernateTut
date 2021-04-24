@@ -132,7 +132,7 @@ address tot the user it copies the user id and starts inserting the records in t
 
 
 Now if i want the new table name and its primary or any columns name to be ours choice , then we use @JoinTable annotations
-and if want to change the column names the inside it @JoinColumns.
+and if want to change the column names of the foreign key column then do it inside @JoinColumns.
 
 Now this table has a foreign key but suppose we want that this table to have a primary key also.
 So first step to do is like we should have collection which will have index type of property,
@@ -164,6 +164,23 @@ So for live example if we put session.close after the session.get() function , t
 there will be no proxy object and hence it will throw an exception of LAzyIntialisationException.
 
 We can provide fetchType in the @ElementCollection annotation as a parameter.
-******************************************************************************************************
 
+Here Just keep in mind whatever we are doing with User class and Address class, here user is an entity type but
+Address is a value type not an entity type.
 
+************************************** MAPPINGS ****************************************************************
+
+One to One mapping : now suppose one USER will have only one vehicle at this time. Then there will be one to one mapping
+                     of both the entities in the database. i.e the User table will have a new column added i.e vehicle_id
+                     and this id will reference to the primary key of Vehicle table.
+
+In order to do one to one mapping in hibernate just provide that particular entity variable with annotation @OneToOne
+and then hibernate itself will create a column in the USER class which will be the foreign key and having reference to
+the primary key of the Vehicle class.
+
+** Remember here Vehicle is an entity type not a value type , so when defining it just also provide in hibernate conf xml file
+    that consider Vehicle class also as an entity type and persist it.
+
+    Also remember that if your "hbm2ddl.auto" property will be create then it will not be able to make a new table with
+    the foreign key column of vehicleId , so we need to change it from create to update so that hibernate can add a new
+    column i.e alter command instead of creating it again and then not finding the column.

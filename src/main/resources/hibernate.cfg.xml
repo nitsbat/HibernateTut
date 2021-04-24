@@ -11,8 +11,9 @@
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping class="org.bisht.model.UserDetails"/>
+        <mapping class="org.bisht.model.Vehicle"/>
     </session-factory>
 </hibernate-configuration>

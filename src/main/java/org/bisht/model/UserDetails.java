@@ -1,11 +1,7 @@
 package org.bisht.model;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "User")
@@ -20,17 +16,15 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @JoinTable(name = "User_Address", joinColumns = {
-            @JoinColumn(name = "User_Id")})
-    private List<Address> addressLists = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Vehicle vehicle;
 
-    public List<Address> getAddressLists() {
-        return addressLists;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setAddressLists(List<Address> addressLists) {
-        this.addressLists = addressLists;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public Date getDate() {
