@@ -1,7 +1,9 @@
 package org.bisht.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "User")
@@ -16,15 +18,17 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Vehicle vehicle;
+    @OneToMany
+    @JoinTable(name = "user_vehicle_table",joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
+    private List<Vehicle> vehiclesList = new ArrayList<>();
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public List<Vehicle> getVehiclesList() {
+        return vehiclesList;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehiclesList(List<Vehicle> vehiclesList) {
+        this.vehiclesList = vehiclesList;
     }
 
     public Date getDate() {

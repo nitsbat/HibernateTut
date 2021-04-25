@@ -19,15 +19,28 @@ public class Application {
 
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleName("Apache RTR");
+        vehicle.setUserDetails(user);
 
-        user.setVehicle(vehicle);
+        Vehicle vehicle1 = new Vehicle();
+        vehicle1.setVehicleName("Pulsar RS");
+        vehicle1.setUserDetails(user);
+
+        user.getVehiclesList().add(vehicle);
+        user.getVehiclesList().add(vehicle1);
+
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(user);
         session.save(vehicle);
+        session.save(vehicle1);
         session.getTransaction().commit();
         session.close();
+
+
+        session = sessionFactory.openSession();
+        Vehicle vehicleTemp = (Vehicle) session.get(Vehicle.class, 2);
+        System.out.println(vehicleTemp.getUserDetails());
     }
 
     private static Address newAddress1() {

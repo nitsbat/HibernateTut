@@ -1,9 +1,6 @@
 package org.bisht.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Vehicle {
@@ -13,6 +10,17 @@ public class Vehicle {
     private int vehicleId;
 
     private String vehicleName;
+
+    @ManyToOne
+    private UserDetails userDetails;
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
 
     public int getVehicleId() {
         return vehicleId;

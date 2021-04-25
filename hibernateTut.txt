@@ -184,3 +184,27 @@ the primary key of the Vehicle class.
     Also remember that if your "hbm2ddl.auto" property will be create then it will not be able to make a new table with
     the foreign key column of vehicleId , so we need to change it from create to update so that hibernate can add a new
     column i.e alter command instead of creating it again and then not finding the column.
+
+                                        **********************************
+
+One to Many Mapping : Now its obvious like a single user can have multiple vehicles, therefore there will be a One to
+                        many relationship.
+                        So first thing we will do is to give the @OneToMany annotation,
+                        then secondly we will change a single vehicle to a set/list of vehicles.
+                        We can then give JoinColumn and other annotations so that we can alter the column names, etc.
+
+So when we do this one to many mapping, hibernate will not introduce any column, instead it will make a new table
+of users_vehicle having user_id and vehicle_id mapped. So if we have a single user with id 101 and it has two vehicles
+element in its list with vehicle_id 2001 and 2002, the hibernate will create a new table with two records as
+    101 -> 2001
+    102 -> 2002
+
+Now to chane or update the column names of this new table, we have to use the @JoinTable annotation to change the
+columns use the property of @JoinColumns.
+
+Now one point is there like in Vehicle entity class , we can create the userDetail object and can have ManyToOne relationship in it,
+just like vice-versa of the above one.
+                                    ***************************************
+
+
+
