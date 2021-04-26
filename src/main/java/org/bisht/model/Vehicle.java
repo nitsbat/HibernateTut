@@ -1,6 +1,8 @@
 package org.bisht.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Vehicle {
@@ -11,15 +13,14 @@ public class Vehicle {
 
     private String vehicleName;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserDetails userDetails;
+    @ManyToMany // This @ManyToMany will create a table Vehicle_user and the userDetails will be mapped to this.
+    private List<UserDetails> userDetails = new ArrayList<>();
 
-    public UserDetails getUserDetails() {
+    public List<UserDetails> getUserDetails() {
         return userDetails;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
+    public void setUserDetails(List<UserDetails> userDetails) {
         this.userDetails = userDetails;
     }
 

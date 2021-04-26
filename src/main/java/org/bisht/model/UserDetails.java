@@ -18,7 +18,7 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "userDetails")
     private List<Vehicle> vehiclesList = new ArrayList<>();
 
     public List<Vehicle> getVehiclesList() {

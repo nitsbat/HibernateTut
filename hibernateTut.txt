@@ -215,6 +215,14 @@ So for this functionality we just want to give the many side class with the same
 @OneToMany we have @mappedBy property in which just give the member variable name of that class object.
                                     ***************************************
 
+Many To Many mapping : Now suppose the same vehicle can be owned by multiple users, hence there will be manyTomany mapping
+                        between user and vehicle.
+                        So just give the annotation of @ManyToMany and hibernate will create two tables to do firstly
+                        mapping from user to vehicle and another for vehicle to user.
+
+                        But for the mapping with one table we can again give the mapped by and the table will form of the
+                        other class in which mappedBy is not given i.e the class in which only @ManyToMany is given.
+                        But the many to many mapping will be there between the column elements.
 
 
 

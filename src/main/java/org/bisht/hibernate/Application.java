@@ -19,11 +19,11 @@ public class Application {
 
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleName("Apache RTR");
-        vehicle.setUserDetails(user);
+        vehicle.getUserDetails().add(user);
 
         Vehicle vehicle1 = new Vehicle();
         vehicle1.setVehicleName("Pulsar RS");
-        vehicle1.setUserDetails(user);
+        vehicle1.getUserDetails().add(user);
 
         user.getVehiclesList().add(vehicle);
         user.getVehiclesList().add(vehicle1);
