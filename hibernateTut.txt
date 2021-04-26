@@ -196,15 +196,27 @@ One to Many Mapping : Now its obvious like a single user can have multiple vehic
 So when we do this one to many mapping, hibernate will not introduce any column, instead it will make a new table
 of users_vehicle having user_id and vehicle_id mapped. So if we have a single user with id 101 and it has two vehicles
 element in its list with vehicle_id 2001 and 2002, the hibernate will create a new table with two records as
+
     101 -> 2001
     102 -> 2002
 
-Now to chane or update the column names of this new table, we have to use the @JoinTable annotation to change the
+Now to change or update the column names of this new table, we have to use the @JoinTable annotation to change the
 columns use the property of @JoinColumns.
 
 Now one point is there like in Vehicle entity class , we can create the userDetail object and can have ManyToOne relationship in it,
 just like vice-versa of the above one.
+
+** There is one more way in which we can specify the One-to-Many or ManyToOne relationship.
+In this we can have the Many side Entity to have the user id because the user can't have the id of more than one vehicle
+but every vehicle will have a userID . so what we can do instead of creating a new mapping table, just
+we can add a column in the Vehicle table and have a user id mapped to each record.
+
+So for this functionality we just want to give the many side class with the same @ManyToOne annotation but in the
+@OneToMany we have @mappedBy property in which just give the member variable name of that class object.
                                     ***************************************
+
+
+
 
 
 

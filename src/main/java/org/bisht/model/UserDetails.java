@@ -19,8 +19,6 @@ public class UserDetails {
     private Date date;
 
     @OneToMany
-    @JoinTable(name = "user_vehicle_table",joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "vehicle_id"))
     private List<Vehicle> vehiclesList = new ArrayList<>();
 
     public List<Vehicle> getVehiclesList() {
